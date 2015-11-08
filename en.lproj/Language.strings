@@ -1,0 +1,20 @@
+/* 
+  Language.strings
+  本地化语言和切换
+
+  Created by CK_chan on 15/11/7.
+  Copyright © 2015年 CK_chan. All rights reserved.
+*/
+
+//英文
+"apple" = "APPLE";
+"Language" = "Language";
+
+"页面一" = "Frist";
+"页面二" = "Second";
+
+"切换显示语言" = "Change Display Language";
+"系统语言" = "English";
+
+"取消" = "Cancel";
+"确认" = "Confirm";
