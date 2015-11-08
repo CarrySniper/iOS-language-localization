@@ -3,9 +3,9 @@
 
 ### 效果图
 #### 第一页中英文对比
-![](https://github.com/cjq002/ToolKit/raw/master/IMAGE/zh-Hans1.png) 
-![](https://github.com/cjq002/ToolKit/raw/master/IMAGE/en10.png) 
+![](https://github.com/cjq002/iOS-language-localization/raw/master/IMAGE/zh-Hans1.png) 
+![](https://github.com/cjq002/iOS-language-localization/raw/master/IMAGE/en10.png) 
 
 #### 第二页中英文对比
-![](https://github.com/cjq002/ToolKit/raw/master/IMAGE/zh-Hans2.png)
-![](https://github.com/cjq002/ToolKit/raw/master/IMAGE/en2.png) 
+![](https://github.com/cjq002/iOS-language-localization/raw/master/IMAGE/zh-Hans2.png)
+![](https://github.com/cjq002/iOS-language-localization/raw/master/IMAGE/en2.png) 
