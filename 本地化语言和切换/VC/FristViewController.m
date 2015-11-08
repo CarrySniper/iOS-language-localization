@@ -34,6 +34,14 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor orangeColor];
     [self.view addSubview:label];
+    
+    
+    UILabel *download = [[UILabel alloc]initWithFrame:CGRectMake(10, 180, self.view.frame.size.width-20, 80)];
+    download.text = @"demo下载地址：\nhttps://github.com/cjq002\n/iOS-language-localization.git";
+    download.textAlignment = NSTextAlignmentCenter;
+    download.numberOfLines = 0;
+    [self.view addSubview:download];    
+    
 }
 
 - (void)didReceiveMemoryWarning {

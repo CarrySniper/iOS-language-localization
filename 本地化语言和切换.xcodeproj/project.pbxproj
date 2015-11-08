@@ -13,9 +13,9 @@
 		0D68DD741BEEF2C100C1B22C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D68DD721BEEF2C100C1B22C /* Main.storyboard */; };
 		0D68DD761BEEF2C100C1B22C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D68DD751BEEF2C100C1B22C /* Assets.xcassets */; };
 		0D68DD791BEEF2C100C1B22C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D68DD771BEEF2C100C1B22C /* LaunchScreen.storyboard */; };
-		0D68DD841BEEF33200C1B22C /* Language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D68DD861BEEF33200C1B22C /* Language.strings */; };
 		0D68DD8E1BEEF38800C1B22C /* FristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68DD8B1BEEF38800C1B22C /* FristViewController.m */; settings = {ASSET_TAGS = (); }; };
 		0D68DD8F1BEEF38800C1B22C /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D68DD8D1BEEF38800C1B22C /* SecondViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0D68DD921BEF163F00C1B22C /* Language.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D68DD941BEF163F00C1B22C /* Language.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +31,12 @@
 		0D68DD7A1BEEF2C100C1B22C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D68DD801BEEF2F000C1B22C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0D68DD811BEEF2F000C1B22C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		0D68DD871BEEF33400C1B22C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Language.strings; sourceTree = "<group>"; };
-		0D68DD881BEEF33500C1B22C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Language.strings"; sourceTree = "<group>"; };
 		0D68DD8A1BEEF38800C1B22C /* FristViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FristViewController.h; sourceTree = "<group>"; };
 		0D68DD8B1BEEF38800C1B22C /* FristViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FristViewController.m; sourceTree = "<group>"; };
 		0D68DD8C1BEEF38800C1B22C /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		0D68DD8D1BEEF38800C1B22C /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		0D68DD951BEF164100C1B22C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Language.strings; sourceTree = "<group>"; };
+		0D68DD961BEF164100C1B22C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Language.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +53,8 @@
 		0D68DD5D1BEEF2C100C1B22C = {
 			isa = PBXGroup;
 			children = (
+				0D68DD941BEF163F00C1B22C /* Language.strings */,
 				0D68DD891BEEF38800C1B22C /* VC */,
-				0D68DD861BEEF33200C1B22C /* Language.strings */,
 				0D68DD681BEEF2C100C1B22C /* 本地化语言和切换 */,
 				0D68DD671BEEF2C100C1B22C /* Products */,
 			);
@@ -162,7 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D68DD841BEEF33200C1B22C /* Language.strings in Resources */,
+				0D68DD921BEF163F00C1B22C /* Language.strings in Resources */,
 				0D68DD791BEEF2C100C1B22C /* LaunchScreen.storyboard in Resources */,
 				0D68DD761BEEF2C100C1B22C /* Assets.xcassets in Resources */,
 				0D68DD741BEEF2C100C1B22C /* Main.storyboard in Resources */,
@@ -205,11 +205,11 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		0D68DD861BEEF33200C1B22C /* Language.strings */ = {
+		0D68DD941BEF163F00C1B22C /* Language.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0D68DD871BEEF33400C1B22C /* en */,
-				0D68DD881BEEF33500C1B22C /* zh-Hans */,
+				0D68DD951BEF164100C1B22C /* en */,
+				0D68DD961BEF164100C1B22C /* zh-Hans */,
 			);
 			name = Language.strings;
 			sourceTree = "<group>";
@@ -340,6 +340,7 @@
 				0D68DD7F1BEEF2C100C1B22C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

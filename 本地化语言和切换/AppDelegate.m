@@ -47,7 +47,7 @@
 }
 
 - (void)toMain{
-    self.tabbarCtr = nil;
+//    self.tabbarCtr = nil;
     self.tabbarCtr = [[UITabBarController alloc]init];
     self.window.rootViewController = self.tabbarCtr;
     
