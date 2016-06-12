@@ -8,12 +8,9 @@
 
 #import "ViewController.h"
 
-#define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
-
 @interface ViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     
     UIImageView *_imageView;
-    
     UIImageView *_imageViewR;
     
 }
@@ -26,8 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //在ViewController.m创建并初始化UIImageView用于显示获取的图片。
-    
+    //在ViewController.m创建并初始化UIImageView用于显示获取的图片。    
     _imageViewR = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, 30, 100,100)];
     _imageViewR.backgroundColor = [UIColor grayColor];
     _imageViewR.layer.cornerRadius = 50;
@@ -51,112 +47,58 @@
     [self.view addSubview:btn];
 }
 
-/*
- * 头像
- */
-#pragma mark - 按钮响应事件
+#pragma mark - 按钮响应事件 弹出图片来源选择提示框
 - (void)btnClick:(UIButton *)sender{
-
-    if (IOS8) {
+    
+    //iOS8之后 使用UIAlertController 代替UIAlertView和UIActionSheet
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"获取图片"  message:nil  preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    // 判断是否支持相机。注：模拟器没有相机
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"获取图片"  message:nil  preferredStyle:UIAlertControllerStyleActionSheet];
-        
-        // 判断是否支持相机
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-            
-            UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                // 相机
-                UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                imagePickerController.delegate = self;
-                imagePickerController.allowsEditing = YES;
-                imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentViewController:imagePickerController animated:YES completion:^{}];
-                
-            }];
-            
-            [alertController addAction:defaultAction];
-        }
-        
-        UIAlertAction *defaultAction1 = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            // 相册
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // 相机
             UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
             imagePickerController.delegate = self;
             imagePickerController.allowsEditing = YES;
-            imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:imagePickerController animated:YES completion:^{}];
             
         }];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }];
-        
-        
-        [alertController addAction:cancelAction];
-        
-        [alertController addAction:defaultAction1];
-        
-        //弹出视图 使用UIViewController的方法
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-    }else{
-        UIActionSheet *sheet;
-        
-        // 判断是否支持相机
-        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-            sheet  = [[UIActionSheet alloc] initWithTitle:@"获取图片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
-            
-        }else {
-            sheet  = [[UIActionSheet alloc] initWithTitle:@"获取图片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
-        }
-        [sheet showInView:self.view];
+        [alertController addAction:defaultAction];
     }
     
-}
-
-#pragma mark - 调用UIActionSheet iOS7使用
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    NSUInteger sourceType = 0;
-    // 判断是否支持相机
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        switch (buttonIndex) {
-            case 0:
-                // 取消
-                return;
-            case 1:
-                // 相机
-                sourceType = UIImagePickerControllerSourceTypeCamera;
-                break;
-            case 2:
-                // 相册
-                sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                break;
-        }
-    } else {
+    UIAlertAction *defaultAction1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // 相册
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerController animated:YES completion:^{}];
         
-        if (buttonIndex == 1) {
-            sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        }
-    }
+    }];
     
-    // 跳转到相机或相册页面
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
     
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.delegate = self;
-    imagePickerController.allowsEditing = YES;
-    imagePickerController.sourceType = sourceType;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
     
+    [alertController addAction:cancelAction];
+    [alertController addAction:defaultAction1];
+    
+    //弹出视图 使用UIViewController的方法
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - iOS7 iOS8都要调用方法，选择完成后调用该方法。
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+#pragma mark - 选择完成后调用该方法。
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-
+    
     // 保存图片至本地，上传图片到服务器需要使用
     [self saveImage:image withName:@"avatar.png"];
     
@@ -169,13 +111,14 @@
     [_imageViewR setImage:savedImage];
 }
 
-#pragma mark - iOS7 iOS8都要调用方法，按取消按钮用该方法。
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+#pragma mark - 按取消按钮用该方法。
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 保存图片至沙盒
-- (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName{
+- (void)saveImage:(UIImage *)currentImage withName:(NSString *)imageName
+{
     
     NSData *imageData = UIImageJPEGRepresentation(currentImage, 1);//1为不缩放保存，取值（0.0-1.0）
     // 获取沙盒目录
