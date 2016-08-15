@@ -1,5 +1,7 @@
 # iOS-language-localization
-本地化语言和切换，可以不切换系统语言，不重启应用直接切换自定义语言。现在只写中英文。
+本地化语言和切换，可以不切换系统语言，不重启应用直接切换自定义语言。现在只写中英文。<br>
+
+百度经验：http://jingyan.baidu.com/article/fd8044fac8c0d55030137a4c.html
 
 ### Language.strings两个子文件内容
 ![](https://github.com/cjq002/iOS-language-localization/raw/master/IMAGE/strings.png) 
