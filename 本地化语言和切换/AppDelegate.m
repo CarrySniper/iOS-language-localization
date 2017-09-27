@@ -23,8 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
+        
     /*
      *  获取当前系统语言，判断首次应该使用哪个语言文件
      */
@@ -46,8 +45,7 @@
     return YES;
 }
 
-- (void)toMain{
-//    self.tabbarCtr = nil;
+- (void)toMain {
     self.tabbarCtr = [[UITabBarController alloc]init];
     self.window.rootViewController = self.tabbarCtr;
     
@@ -61,7 +59,7 @@
     vc1.title = Localized(@"页面一");
     vc2.title = Localized(@"页面二");
     
-    NSArray *array = @[navCtr1,navCtr2];
+    NSArray *array = @[navCtr1, navCtr2];
     self.tabbarCtr.viewControllers = array;
     
     //tabBar背景颜色

@@ -55,25 +55,23 @@
 
 #pragma mark - 按钮响应事件
 - (void)btnClick{
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:Localized(@"切换显示语言") message:nil delegate:self cancelButtonTitle:Localized(@"取消") otherButtonTitles:Localized(@"确认"),nil];
-    [view show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex == 1){
-        //修改本地获取的语言文件-交替
-        NSString *language = [[NSUserDefaults standardUserDefaults]objectForKey:@"appLanguage"];
-        if ([language isEqualToString: @"en"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
-        }else        {
-            [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
-
-        }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        //发出通知-语言改变
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:Localized(@"切换显示语言") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:Localized(@"取消") style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *chineseAction = [UIAlertAction actionWithTitle:@"中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
+        [[NSUserDefaults standardUserDefaults] synchronize];//发出通知-语言改变
         [[NSNotificationCenter defaultCenter] postNotificationName:LanguageChanged object:nil];
-    }
+    }];
+    UIAlertAction *englishAction = [UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
+        [[NSUserDefaults standardUserDefaults] synchronize];//发出通知-语言改变
+        [[NSNotificationCenter defaultCenter] postNotificationName:LanguageChanged object:nil];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:chineseAction];
+    [alertController addAction:englishAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - 接收到语言改变的通知后，调用该方法。

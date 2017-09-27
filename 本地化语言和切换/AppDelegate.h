@@ -12,7 +12,7 @@
 /*
  *  获取当前保存在NSUserDefaults的本地语言
  */
-#define currentLanguage [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]]
+#define currentLanguage [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]]
 
 /*
  *  根据获取语言文件所在路径
