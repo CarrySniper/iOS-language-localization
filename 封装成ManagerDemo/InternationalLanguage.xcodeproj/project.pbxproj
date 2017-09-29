@@ -36,6 +36,7 @@
 		9921C6201F7A521100CBC1D9 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		9921C6211F7A551500CBC1D9 /* WMLanguageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMLanguageManager.h; sourceTree = "<group>"; };
 		9921C6221F7A551500CBC1D9 /* WMLanguageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMLanguageManager.m; sourceTree = "<group>"; };
+		99FF738F1F7DF06500BE48D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +174,7 @@
 			children = (
 				9921C6081F7A43C300CBC1D9 /* Base */,
 				9921C6171F7A445E00CBC1D9 /* zh-Hans */,
+				99FF738F1F7DF06500BE48D2 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

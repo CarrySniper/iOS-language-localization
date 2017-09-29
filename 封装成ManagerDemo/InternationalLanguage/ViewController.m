@@ -39,16 +39,16 @@
     
     NSString *message = [NSString stringWithFormat:@"当前使用语言为：%@", [[WMLanguageManager manager] currentLanguage]];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择语言" message:message preferredStyle:UIAlertControllerStyleActionSheet];
-    
+
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:WMString(@"cancel") style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *chineseAction = [UIAlertAction actionWithTitle:@"中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[WMLanguageManager manager] setCurrentLanguage:WMLanguageOfChinese];
-        
+
         [self.button setTitle:WMString(@"button") forState:UIControlStateNormal];
     }];
     UIAlertAction *englishAction = [UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[WMLanguageManager manager] setCurrentLanguage:WMLanguageOfEnglish];
-        
+
         [self.button setTitle:WMString(@"button") forState:UIControlStateNormal];
     }];
     [alertController addAction:cancelAction];

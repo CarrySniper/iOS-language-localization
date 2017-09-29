@@ -21,15 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiV-Rh-gEu">
-                                <rect key="frame" x="165" y="318" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiV-Rh-gEu">
+                                <rect key="frame" x="143" y="311.5" width="90" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="H2f-Rz-Qlj"/>
+                                    <constraint firstAttribute="height" constant="44" id="uWz-y6-p67"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon_body_statusbar">
+                                    <color key="titleColor" red="1" green="0.1017184444" blue="0.1050600849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="clickAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4jh-fp-wUA"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aiV-Rh-gEu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9SH-aC-8uj"/>
                             <constraint firstItem="aiV-Rh-gEu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hQb-pi-qqL"/>
@@ -44,4 +50,7 @@
             <point key="canvasLocation" x="24.800000000000001" y="30.134932533733135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_body_statusbar" width="24" height="24"/>
+    </resources>
 </document>

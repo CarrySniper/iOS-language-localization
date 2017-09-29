@@ -34,7 +34,9 @@ static dispatch_once_t onceToken;
 
 #pragma mark 根据键值获取对应文字。table为语言文件名Language.strings
 - (NSString *)wm_matchString:(NSString *)string {
-    return [[NSBundle bundleWithPath:[self currentLanguagePath]] localizedStringForKey:string value:nil table:WMNameForLanguageFile];
+    NSString *path = [self currentLanguagePath];
+    NSString *matchString = [[NSBundle bundleWithPath:path] localizedStringForKey:string value:nil table:WMNameForLanguageFile];
+    return matchString ? matchString : string;
 }
 
 #pragma mark -
@@ -75,7 +77,7 @@ static dispatch_once_t onceToken;
  @return 保存的语言
  */
 - (NSString *)currentLanguage {
-    return [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:WMKeyForUDLanguage]];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:WMKeyForUDLanguage];
 }
 
 /**
