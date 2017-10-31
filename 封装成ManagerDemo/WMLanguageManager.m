@@ -33,7 +33,7 @@ static dispatch_once_t onceToken;
 }
 
 #pragma mark 根据键值获取对应文字。table为语言文件名Language.strings
-- (NSString *)wm_matchString:(NSString *)string {
+- (NSString *)matchString:(NSString *)string {
     NSString *path = [self currentLanguagePath];
     NSString *matchString = [[NSBundle bundleWithPath:path] localizedStringForKey:string value:nil table:WMNameForLanguageFile];
     return matchString ? matchString : string;
@@ -50,16 +50,16 @@ static dispatch_once_t onceToken;
     if ([currentLanguage isEqualToString:self.currentLanguage]) {
         return;
     }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:currentLanguage forKey:WMKeyForUDLanguage];
+    [userDefaults synchronize];
+    
     // 方法一：代理切换事件
     if (self.protocol && [self.protocol respondsToSelector:@selector(languageChange:)]) {
         [self.protocol languageChange:currentLanguage];
     }
     // 方法二：发出切换通知
     [[NSNotificationCenter defaultCenter] postNotificationName:WMNotificationLanguageChange object:currentLanguage];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:currentLanguage forKey:WMKeyForUDLanguage];
-    [userDefaults synchronize];
 }
 
 /**
@@ -86,7 +86,8 @@ static dispatch_once_t onceToken;
  @return 文件路径
  */
 - (NSString *)currentLanguagePath {
-    return (NSString *)[[NSBundle mainBundle] pathForResource:[self currentLanguage] ofType:@"lproj"];
+    NSString *language = [self currentLanguage];
+    return (NSString *)[[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
 }
 
 #pragma mark -

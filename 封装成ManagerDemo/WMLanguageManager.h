@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define WMString(key) [[WMLanguageManager manager] wm_matchString:(key)]
+#define WMString(key) [[WMLanguageManager manager] matchString:(key)]
 
 /** 可选择的语言 */
 static NSString *const WMLanguageOfChinese = @"zh-Hans";     // 简体中文
@@ -35,7 +35,7 @@ static NSString *const WMNotificationLanguageChange = @"WMNotificationLanguageCh
 
 @property (nonatomic, strong, readonly) NSString *localeLanguage;
 
-@property (nonatomic, strong) NSString *currentLanguage;
+@property (nonatomic, strong, readonly) NSString *currentLanguage;
 
 @property (nonatomic, assign) id<WMLanguageManagerProtocol> protocol;
 
@@ -48,20 +48,27 @@ static NSString *const WMNotificationLanguageChange = @"WMNotificationLanguageCh
  @param string 键
  @return 对应语言的值
  */
-- (NSString *)wm_matchString:(NSString *)string;
+- (NSString *)matchString:(NSString *)string;
+
+/**
+ 设置当前语言
+ 
+ @param currentLanguage 可选择的语言 WMLanguageOf xxx
+ */
+- (void)setCurrentLanguage:(NSString *)currentLanguage;
 
 #pragma mark - 方法二：可使用通知模式，监听语言修改
 /**
  添加语言切换通知
-
+ 
  @param observer 观察者
  @param selector 选择器
  */
 + (void)addNotificationCenter:(id)observer selector:(SEL)selector;
 
 /**
-移除语言切换通知
-
+ 移除语言切换通知
+ 
  @param observer 观察者
  */
 + (void)removeNotificationCenter:(id)observer;
@@ -103,5 +110,3 @@ static NSString *const WMNotificationLanguageChange = @"WMNotificationLanguageCh
  NSLog(@"当前语言：%@", currentLanguage);
  }
  */
-
-
